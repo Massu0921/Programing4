@@ -1,0 +1,17 @@
+P127Q4	START
+	RPUSH
+	LD	GR1,=50
+	SRL	GR1,1	;最下位ビットをOFに設定 0なら0（偶数）,1なら1（奇数）
+	JOV	OD
+;	偶数
+	OUT	EVEN,LENE
+	JUMP	FIN
+;	奇数
+OD	OUT	ODD,LENO
+FIN	RPOP
+	RET
+EVEN	DC	'Even'
+LENE	DC	4
+ODD	DC	'Odd'
+LENO	DC	3
+	END
