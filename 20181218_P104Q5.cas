@@ -1,0 +1,10 @@
+P104Q5	START
+	RPUSH
+	LAD	GR1,#1234	; GR1に任意の値
+	LD	GR2,GR1		; GR2にも同じ値を
+	SRL	GR1,8		; 上位8bitを右へ
+	SLL	GR2,8		; 下位8bitを左へ
+	OR	GR1,GR2		; ORで上位・下位を統合
+	RPOP
+	RET
+	END

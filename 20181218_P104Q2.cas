@@ -1,0 +1,21 @@
+P104Q2	START
+	RPUSH
+	; GR1: #1234, GR2: #ABCD
+	; ①GR1,GR2の論理積 (#0204)
+	LAD	GR1,#1234	; 定義
+	LAD	GR2,#ABCD
+	AND	GR1,GR2
+	; ②GR1,GR2の論理和 (#BBFD)
+	LAD	GR1,#1234	; 定義
+	LAD	GR2,#ABCD
+	OR	GR1,GR2
+	; ③GR1,GR2の排他的論理和 (#B9F9)
+	LAD	GR1,#1234	; 定義
+	LAD	GR2,#ABCD
+	XOR	GR1,GR2
+	; ④GR1,#FF00の論理積 (#1200,上位8bitのみ)
+	LAD	GR1,#1234	; 定義
+	AND	GR1,=#FF00	; リテラル使用
+	RPOP
+	RET
+	END

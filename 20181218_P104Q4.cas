@@ -1,0 +1,8 @@
+P104Q4	START
+	RPUSH
+	LAD	GR1,-12	; GR1‚É”CˆÓ‚Ì’l
+	XOR	GR1,=#FFFF	; ”½“]
+	ADDL	GR1,=1		; 1‚ð‰ÁŽZ
+	RPOP
+	RET
+	END

@@ -1,0 +1,19 @@
+P104Q7	START
+	RPUSH
+	LAD	GR1,DATA	; アドレス取得
+	LD	GR2,0,GR1
+	LD	GR3,1,GR1
+	AND	GR2,=#000F
+	AND	GR3,=#000F
+	; 10の位になる数(GR2)を10倍
+	LD	GR4,GR2		; コピー
+	SLL	GR2,1		; GR2 x 2
+	SLL	GR4,3		; GR4(GR2) x 8
+	ADDL	GR2,GR4		; -> GR2+GR4 (GR2 x 10)
+	; 足してGR0
+	ADDL	GR2,GR3
+	LD	GR0,GR2
+	RPOP
+	RET
+DATA	DC	'28'		; 任意の2桁の数値（文字列）
+	END

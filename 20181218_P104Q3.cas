@@ -1,0 +1,15 @@
+P104Q3	START
+	RPUSH
+	; 論理シフト (#ABCD->#BCD0->#00BC->#0BC0)
+	LAD	GR1,#ABCD	; GR1 <- #ABCD
+	SLL	GR1,4	; 左に4bit
+	SRL	GR1,8	; 右に8bit
+	SLL	GR1,4	; 左に4bit
+	; 算術シフト (#ABCD->#BCD0->#FFBC->#FBC0)
+	LAD	GR1,#ABCD	; GR1 <- #ABCD
+	SLA	GR1,4	; 左に4bit
+	SRA	GR1,8	; 右に8bit
+	SLA	GR1,4	; 左に4bit
+	RPOP
+	RET
+	END

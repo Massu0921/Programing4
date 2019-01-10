@@ -1,0 +1,11 @@
+; P33 問4
+P33Q4	START			; 開始
+	RPUSH
+	LAD	GR7,#1111	; GR7の値を順に書き換え
+	LAD	GR7,#2222
+	LAD	GR7,#3333
+	LAD	GR7,#4444
+	LAD	GR7,#5555
+	RPOP
+	RET			; 終了
+	END

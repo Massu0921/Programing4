@@ -1,0 +1,7 @@
+;プログラム
+P33Q2	START			;プログラム開始
+	RPUSH			;決まり文句
+	LAD	GR7,#ABCD	;GR7に16進数の値ABCDを格納
+	RPOP			;RPUSHと対
+	RET			;実行終了
+	END			;プログラム終了

@@ -1,0 +1,7 @@
+;プログラム0101
+PRG0101 START	;プログラム開始
+	RPUSH	;
+	NOP	;何もしない（遅延用）
+	RPOP	;RPUSHと対
+	RET	;実行終了
+	END	;しめくくり
