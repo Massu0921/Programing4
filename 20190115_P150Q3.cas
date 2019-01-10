@@ -1,0 +1,20 @@
+P150Q4	START
+	RPUSH
+	LD	GR1,=0
+;8までループ(前判定)
+LOOP	CPA	GR1,=8
+	JPL	FIN
+	LD	GR2,='0'
+	ADDA	GR2,GR1		;文字コード+数値
+	ST	GR2,CNT
+	OUT	BUF,LEN
+	ADDA	GR1,=1
+	JUMP	LOOP
+;
+FIN	RPOP
+	RET
+;
+LEN	DC 	9		;BUF+CNT分
+BUF	DC	'Count = '
+CNT	DC	' '		;数値出力分
+	END

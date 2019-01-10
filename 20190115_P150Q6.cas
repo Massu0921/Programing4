@@ -1,0 +1,30 @@
+P150Q6	START
+	RPUSH
+	LD	GR1,=0
+	LD	GR7,=0
+;
+LOOP	LD	GR0,DATA,GR1		;文字取得
+	CPA	GR0,=' '
+	JZE	SPACE
+	CPA	GR0,='.'
+	JZE	FIN
+	ST	GR0,WORD,GR7	;出力文字設定
+	ADDA	GR7,=1		;出力文字数カウント
+	ADDA	GR1,=1		;次の文字へ
+	JUMP	LOOP
+;
+SPACE	ST	GR7,LEN		;出力文字列長
+	OUT	WORD,LEN
+	LD	GR7,=0		;出力文字列長初期化
+	ADDA	GR1,=1		;次の文字へ[
+	JUMP	LOOP
+;
+FIN	ST	GR7,LEN		;出力文字列長
+	OUT	WORD,LEN
+;
+	RPOP
+	RET
+DATA	DC	'This is a pen.'
+WORD	DS	256
+LEN	DS	1
+	END
