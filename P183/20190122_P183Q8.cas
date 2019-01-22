@@ -1,0 +1,36 @@
+P185Q8	START
+	RPUSH
+	LAD	GR1,DATA
+	LAD	GR2,10
+	CALL	MAX
+	RPOP
+	RET
+;
+MAX	PUSH	0,GR3
+	PUSH	0,GR4
+	PUSH	0,GR5
+	LD	GR3,GR1		; DATAアドレス
+	LD	GR5,GR3		; GR5: 最終番地、ループ判定用
+	ADDA	GR5,GR2
+	LD	GR1,=0		; 最大値初期化
+	LD	GR2,=0		; 最大値発見場所
+	LD	GR4,=1		; 現在位置
+; 論理演算を使うこと! 算術だと50000が負になる
+LOOP	CPL	GR1,0,GR3	; GR1 > GR3(DATAアドレス) (r),(adr)
+	JPL	SKIP
+; 更新
+	LD	GR1,0,GR3	; 最大値更新
+	LD	GR2,GR4		; 場所更新
+; 共通処理
+SKIP	LAD	GR3,1,GR3	; 各値をインクリメント
+	LAD	GR4,1,GR4
+	CPL	GR3,GR5
+	JNZ	LOOP
+;
+	POP	GR5
+	POP	GR4
+	POP	GR3
+	RET
+;
+DATA	DC	1,20000,30,4000,50000,600,7,8000,900,9999
+	END
