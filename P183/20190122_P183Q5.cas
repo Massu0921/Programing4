@@ -2,6 +2,7 @@ P184Q5	START
 	RPUSH
 	LD	GR1,=#1234	;16進数設定
 	CALL	DISP
+	OUT	DATA,LEN	;出力
 	RPOP
 	RET
 ;
@@ -15,7 +16,6 @@ LOOP	LD	GR2,GR1		;コピー
 	SUBL	GR4,=1
 	CPA	GR4,=-1		;ループ判定
 	JNZ	LOOP
-	OUT	DATA,LEN	;出力
 	RPOP
 	RET
 ;
